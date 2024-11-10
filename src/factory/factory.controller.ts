@@ -10,7 +10,7 @@ import { Factory } from './entities/factory.entity';
 export class FactoryController {
   constructor(private readonly factoryService: FactoryService) {}
 
-  @Post()
+  @Post('createFactory')
   @ApiOperation({ summary: "Yangi factory qo'shish" })
   @ApiResponse({
     status: 201,
@@ -22,7 +22,7 @@ export class FactoryController {
     return this.factoryService.create(createFactoryDto);
   }
 
-  @Get()
+  @Get('allFactory')
   @ApiOperation({ summary: "Barcha factorylarni olish" })
   @ApiResponse({
     status: 200,
@@ -33,7 +33,7 @@ export class FactoryController {
     return this.factoryService.findAll();
   }
 
-  @Get(':id')
+  @Get('oneFactory/:id')
   @ApiOperation({ summary: "ID bo'yicha bitta factoryni olish" })
   @ApiResponse({
     status: 200,
@@ -45,7 +45,7 @@ export class FactoryController {
     return this.factoryService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('updateFactory/:id')
   @ApiOperation({ summary: "Factory ma'lumotlarini yangilash" })
   @ApiResponse({
     status: 200,
@@ -58,7 +58,7 @@ export class FactoryController {
     return this.factoryService.update(+id, updateFactoryDto);
   }
 
-  @Delete(':id')
+  @Delete('deleteFactory/:id')
   @ApiOperation({ summary: "Factoryni o'chirish" })
   @ApiResponse({
     status: 200,

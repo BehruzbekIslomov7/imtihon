@@ -97,4 +97,5 @@ export class Customer extends Model<Customer, ICustomerAttr> {
     })
     activation_link: string;
 
+    
 }

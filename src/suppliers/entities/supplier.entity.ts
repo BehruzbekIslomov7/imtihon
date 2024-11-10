@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Contract } from "../../contract/entities/contract.entity";
 
 
 
@@ -47,4 +48,7 @@ export class Supplier extends Model<Supplier, ISupplierAttr>{
         unique: true, 
     })
     phone_number: string;
+
+    @HasMany(() => Contract)
+    contracts: Contract[];
 }

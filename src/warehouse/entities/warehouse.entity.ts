@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import { Contract } from "../../contract/entities/contract.entity";
 
 
 interface IWarehouseAttr{
@@ -71,4 +72,6 @@ export class Warehouse extends Model<Warehouse, IWarehouseAttr> {
     })
     description: string;
 
+    @HasMany(() => Contract)
+    contracts: Contract[];
 }

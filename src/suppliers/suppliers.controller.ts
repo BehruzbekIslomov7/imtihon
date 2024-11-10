@@ -10,7 +10,7 @@ import { Supplier } from './entities/supplier.entity';
 export class SuppliersController {
   constructor(private readonly suppliersService: SuppliersService) {}
 
-  @Post('create')
+  @Post('createSupplier')
   @ApiOperation({ summary: "Yangi supplier qo'shish" })
   @ApiResponse({
     status: 201,
@@ -22,7 +22,7 @@ export class SuppliersController {
     return this.suppliersService.create(createSupplierDto);
   }
 
-  @Get('all')
+  @Get('allSupplier')
   @ApiOperation({ summary: "Barcha supplierlarni olish" })
   @ApiResponse({
     status: 200,
@@ -33,7 +33,7 @@ export class SuppliersController {
     return this.suppliersService.findAll();
   }
 
-  @Get(':id')
+  @Get('oneSupplier/:id')
   @ApiOperation({ summary: "ID bo'yicha bitta supplierni olish" })
   @ApiResponse({
     status: 200,
@@ -45,7 +45,7 @@ export class SuppliersController {
     return this.suppliersService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('allSupplier/:id')
   @ApiOperation({ summary: "supplier ma'lumotlarini yangilash" })
   @ApiResponse({
     status: 200,
@@ -58,7 +58,7 @@ export class SuppliersController {
     return this.suppliersService.update(+id, updateSupplierDto);
   }
 
-  @Delete(':id')
+  @Delete('deleteSupplier/:id')
   @ApiOperation({ summary: "supplierni o'chirish" })
   @ApiResponse({
     status: 200,

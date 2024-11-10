@@ -39,7 +39,7 @@ export class AuthController {
 
 
   @ApiOperation({ summary: "ma'lumotlarni tokenga o'zgartirish" })
-  @Post("/refreshToken/:id")
+  @Post("refreshToken/:id")
   async refreshToken(
     @Param("id") id: number,
     @CookieGetter("refresh_token") refresh_token: string,
@@ -60,6 +60,8 @@ export class AuthController {
     @Param("id") id : string
   ){
     const refresh_token = req.cookies["refresh_token"]
+
+    return this.authService.adminSignOut(refresh_token, res, +id);
   }
 
   ///////=========== customer ===========\\\\\\\\\

@@ -11,7 +11,7 @@ import { Product } from './entities/product.entity';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @Post('create')
+  @Post('createProduct')
   @ApiOperation({ summary: "Yangi supplier qo'shish" })
   @ApiResponse({
     status: 201,
@@ -23,14 +23,14 @@ export class ProductController {
     return this.productService.create(createProductDto);
   }
 
-  @Get('all')
+  @Get('allProduct')
   @ApiOperation({ summary: "Barcha productlarni olish" })
   @ApiResponse({ status: 200, description: "Barcha productlar ro'yxati muvaffaqiyatli olindi."})
   findAll() {
     return this.productService.findAll();
   }
 
-  @Get(':id')
+  @Get('oneProduct/:id')
   @ApiOperation({ summary: "ID bo'yicha bitta productni olish" })
   @ApiResponse({ status: 200, description: "Product muvaffaqiyatli topildi."})
   @ApiResponse({ status: 404, description: "Product topilmadi." })
@@ -38,7 +38,7 @@ export class ProductController {
     return this.productService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('updateProduct/:id')
   @ApiOperation({ summary: "ID bo'yicha bitta productni yangilash" })
   @ApiResponse({ 
     status: 200,
@@ -51,7 +51,7 @@ export class ProductController {
     return this.productService.update(+id, updateProductDto);
   }
 
-  @Delete(':id')
+  @Delete('deleteProduct/:id')
   @ApiOperation({ summary: "ID bo'yicha bitta productni o'chirish" })
   @ApiResponse({ status: 200, description: "Product muvaffaqiyatli o'chirildi."})
   @ApiResponse({ status: 404, description: "Product topilmadi." })

@@ -61,6 +61,6 @@ export class CreateProductDto {
         type: DataType.STRING,
         allowNull: false,
     })
-    category: string
+    category: string;
 }
 

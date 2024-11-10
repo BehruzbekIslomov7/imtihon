@@ -6,6 +6,7 @@ interface IAdminAttr {
   email: string;
   hashed_password: string;
   is_active: boolean;
+  is_admin: boolean;
   is_creator: boolean;
   hashed_refresh_token: string;
 }

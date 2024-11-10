@@ -4,13 +4,14 @@ import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CookieGetter } from '../decorators/cookieGetter.decorator';
+import { Response } from 'express';
 
 @ApiTags('Admin')
 @Controller('admin')
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
-  @Post('create')
+  @Post('create_admin')
   @ApiOperation({ summary: "Yangi admin yaratish" })
   @ApiResponse({ status: 201, description: "Admin yaratildi." })
   @ApiResponse({ status: 400, description: "Xato ma'lumotlar." })
@@ -19,7 +20,7 @@ export class AdminController {
   }
 
   @ApiOperation({ summary: "ma'lumotlarni tokenga o'zgartirish" })
-  @Post("/refreshToken/:id")
+  @Post("refreshToken/:id")
   async refreshToken(
     @Param("id") id: number,
     @CookieGetter("refresh_token") refresh_token: string,
@@ -28,14 +29,14 @@ export class AdminController {
     return this.adminService.refreshToken(id, refresh_token, res);
   }
 
-  @Get('all')
+  @Get('all_admin')
   @ApiOperation({ summary: "Barcha adminlarni olish" })
   @ApiResponse({ status: 200, description: "Adminlar ro'yxati." })
   findAll() {
     return this.adminService.findAll();
   }
 
-  @Get('one/:id')
+  @Get('one_admin/:id')
   @ApiOperation({ summary: "Adminni ID orqali olish" })
   @ApiParam({
     name: "id",
@@ -48,7 +49,7 @@ export class AdminController {
     return this.adminService.findOne(+id);
   }
 
-  @Patch('update:id')
+  @Patch('update_admin/:id')
   @ApiOperation({ summary: "Admin ma'lumotlarini yangilash" })
   @ApiParam({
     name: "id",
@@ -62,7 +63,7 @@ export class AdminController {
     return this.adminService.update(+id, updateAdminDto);
   }
 
-  @Delete('delete:id')
+  @Delete('delete_admin/:id')
   @ApiOperation({ summary: "Adminni o'chirish" })
   @ApiParam({
     name: "id",

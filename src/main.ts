@@ -27,7 +27,7 @@ async function start() {
       .setDescription("Warehouse REST API")
       .setVersion("1.0")
       .addTag(
-        "NESTJS, validation, swagger, guard, sequelize, pg, mailer, bot, sms"
+        "NESTJS, validation, swagger, guard, sequelize, pg, mailer, sms"
       )
       .build();
     const document = SwaggerModule.createDocument(app, config);

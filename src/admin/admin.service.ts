@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Admin } from './entities/admin.entity';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from "bcrypt";
+import { Response } from 'express';
 
 @Injectable()
 export class AdminService {
@@ -88,10 +89,10 @@ export class AdminService {
       { where: { id: newAdmin.id }, returning: true }
     );
 
-    // res.cookie("refresh_token", tokens.refresh_token, {
-    //   httpOnly: true,
-    //   maxAge: +process.env.REFRESH_TIME_MS,
-    // });  
+    res.cookie("refresh_token", tokens.refresh_token, {
+      httpOnly: true,
+      maxAge: +process.env.REFRESH_TIME_MS,
+    });  
 
     return {
       message: "Admin muvaffaqiyatli ro'yxatdan o'tkazildi",

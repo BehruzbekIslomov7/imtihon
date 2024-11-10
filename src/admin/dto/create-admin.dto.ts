@@ -22,6 +22,7 @@ export class CreateAdminDto {
   @IsEmail({}, { message: "To'g'ri email manzilini kiriting" })
   email: string;
 
+  
   @ApiProperty({ description: "Parol", example: "P@ssw0rd" })
   @IsString({ message: "Parol satr bo'lishi kerak" })
   @Length(8, 100, {

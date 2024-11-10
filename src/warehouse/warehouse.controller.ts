@@ -10,7 +10,7 @@ import { Warehouse } from './entities/warehouse.entity';
 export class WarehouseController {
   constructor(private readonly warehouseService: WarehouseService) {}
 
-  @Post('create')
+  @Post('createWarehouse')
   @ApiOperation({ summary: "Yangi warehouse qo'shish" })
   @ApiResponse({
     status: 201,
@@ -22,7 +22,7 @@ export class WarehouseController {
     return this.warehouseService.create(createWarehouseDto);
   }
 
-  @Get()
+  @Get('allWarehouse')
   @ApiOperation({ summary: "Barcha warehouselarni olish" })
   @ApiResponse({
     status: 200,
@@ -33,7 +33,7 @@ export class WarehouseController {
     return this.warehouseService.findAll();
   }
 
-  @Get(':id')
+  @Get('oneWarehouse/:id')
   @ApiOperation({ summary: "ID bo'yicha bitta warehouseni olish" })
   @ApiResponse({
     status: 200,
@@ -45,7 +45,7 @@ export class WarehouseController {
     return this.warehouseService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('updateWarehouse/:id')
   @ApiOperation({ summary: "Warehouse ma'lumotlarini yangilash" })
   @ApiResponse({
     status: 200,
@@ -58,7 +58,7 @@ export class WarehouseController {
     return this.warehouseService.update(+id, updateWarehouseDto);
   }
 
-  @Delete(':id')
+  @Delete('deleteWarehouse/:id')
   @ApiOperation({ summary: "Warehouseni o'chirish" })
   @ApiResponse({
     status: 200,
